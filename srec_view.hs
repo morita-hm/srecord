@@ -48,9 +48,9 @@ splitValues line start len lst idx =
 -- S record の行バーサー
 parseLine :: String -> [Srec]
 parseLine str
-    | header == "S3" = splitValues (trimString 6 l str) m l [] 0
+    | header == "S3" = splitValues (trimString 6 (l-5) str) m (l-5) [] 0
     | header == "S2" = [] 
-    | header == "otherwise" = []
+    | otherwise = []
     where
         m = parseAddr str
         l = parseLength str
